@@ -1,15 +1,14 @@
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 
+import ThoughtForm from '../components/ThoughtForm';
 import ThoughtList from '../components/ThoughtList';
 import FriendList from '../components/FriendList';
-import ThoughtForm from '../components/ThoughtForm';
 
-import { useQuery } from '@apollo/client';
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
-import Auth from '../utils/auth';
-import { ADD_FRIEND } from '../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { ADD_FRIEND } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const Profile = (props) => {
   const { username: userParam } = useParams();
@@ -42,7 +41,7 @@ const Profile = (props) => {
   const handleClick = async () => {
     try {
       await addFriend({
-        variables: { id: user._id }
+        variables: { id: user._id },
       });
     } catch (e) {
       console.error(e);
